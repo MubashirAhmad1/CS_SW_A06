@@ -14,13 +14,12 @@ import java.util.Date;
  */
 public class AddMarks extends javax.swing.JFrame {
 
-    /**
-     * Creates new form AddMarks
-     */
+    DAL dal=new DAL();
     public AddMarks() {
-        DAL d=new DAL();
-        d.setCenter(this);
+        
         initComponents();
+        
+        dal.setCenter(this);
         setTitle("Add Marks");
     }
 
@@ -194,7 +193,7 @@ public class AddMarks extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-         DAL dal=new DAL();
+         
          int marks=Integer.parseInt(marksField.getText());
          int teacherId=Integer.parseInt(teacherIdField.getText());
          int subjectId=Integer.parseInt(subjectField.getText());

@@ -75,6 +75,15 @@ public class StudentInfo extends javax.swing.JFrame {
             }
         });
 
+        searchField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                searchFieldKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                searchFieldKeyReleased(evt);
+            }
+        });
+
         searchCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Id", "Name", "Phone", "Class" }));
 
         jLabel1.setText("By:");
@@ -144,7 +153,7 @@ public class StudentInfo extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         new ShowScore().setVisible(true);
         stId=Integer.parseInt(studentTable.getValueAt(studentTable.getSelectedRow(),0).toString());
-        dal.show(stId+"");
+        
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -172,6 +181,14 @@ public class StudentInfo extends javax.swing.JFrame {
         jScrollPane1.setViewportView(studentTable);
         
     }//GEN-LAST:event_searchButtonActionPerformed
+
+    private void searchFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldKeyPressed
+        searchButtonActionPerformed(null);
+    }//GEN-LAST:event_searchFieldKeyPressed
+
+    private void searchFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldKeyReleased
+        searchButtonActionPerformed(null);
+    }//GEN-LAST:event_searchFieldKeyReleased
 
     /**
      * @param args the command line arguments

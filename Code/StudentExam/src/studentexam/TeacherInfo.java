@@ -13,13 +13,12 @@ import javax.swing.JTable;
  */
 public class TeacherInfo extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TeacherInfo
-     */
+    DAL dal=new DAL();
     public TeacherInfo() {
-        DAL d=new DAL();
-        d.setCenter(this);
+        
         initComponents();
+        
+        dal.setCenter(this);
     }
 
     /**
@@ -34,7 +33,6 @@ public class TeacherInfo extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         teacherTable = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -75,7 +73,7 @@ public class TeacherInfo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-          DAL dal=new DAL();
+          
           String sql="select * from teacher";
           String[] colnames={"Teacher Id","Name","Last Name","Gender","Phone","Email"};
           teacherTable=new JTable(dal.table(sql),colnames);

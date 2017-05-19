@@ -42,6 +42,11 @@ public class Login extends javax.swing.JFrame {
                 formWindowOpened(evt);
             }
         });
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
 
         userField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,7 +113,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_userFieldActionPerformed
 
     private void passFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passFieldActionPerformed
-        // TODO add your handling code here:
+        loginButtonActionPerformed(null);
     }//GEN-LAST:event_passFieldActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
@@ -125,9 +130,9 @@ public class Login extends javax.swing.JFrame {
         StudentExam st=new StudentExam();
         if(con.login(pass2, user)){
             
-            d.view();
-            this.setVisible(false);
-            
+            StudentExam.flag=1;
+            setVisible(false);
+            d.show("WELCOME");
             
         }
         else if(!new DAL().dbcon()){
@@ -144,6 +149,12 @@ public class Login extends javax.swing.JFrame {
         
         //d.hide();
     }//GEN-LAST:event_formWindowOpened
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        if(evt.getKeyCode()==10){
+            loginButtonActionPerformed(null);
+        }
+    }//GEN-LAST:event_formKeyPressed
 
     /**
      * @param args the command line arguments

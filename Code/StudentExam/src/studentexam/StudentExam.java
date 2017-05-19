@@ -17,10 +17,10 @@ public class StudentExam extends javax.swing.JFrame {
     /**
      * Creates new form StudentExam
      */
-    
+    public static int flag=0;
     public StudentExam() {
         initComponents();
-        
+        setTitle("Student Exam");
         setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
         
         
@@ -49,29 +49,46 @@ public class StudentExam extends javax.swing.JFrame {
         scoreMenu = new javax.swing.JMenu();
         updateMenu = new javax.swing.JMenuItem();
         addMarkMenu = new javax.swing.JMenuItem();
-        resultMenu = new javax.swing.JMenu();
-        displayResultsMenu = new javax.swing.JMenuItem();
-        sortMenuItem = new javax.swing.JMenuItem();
         teacherMenu = new javax.swing.JMenu();
         teacherInfo = new javax.swing.JMenuItem();
         addTeacher = new javax.swing.JMenuItem();
         deleteTeacher = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                formFocusGained(evt);
+            }
+        });
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
         });
 
+        jPanel1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jPanel1FocusGained(evt);
+            }
+        });
         jPanel1.setLayout(null);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/studentexam/20833.jpg"))); // NOI18N
         jLabel1.setMaximumSize(new java.awt.Dimension(3600, 2200));
+        jLabel1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jLabel1FocusGained(evt);
+            }
+        });
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(0, 0, 2330, 810);
+        jLabel1.setBounds(0, 0, 2370, 810);
 
         studentMenuBar1.setBorder(null);
+        studentMenuBar1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                studentMenuBar1FocusGained(evt);
+            }
+        });
 
         examMenu.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         examMenu.setText("  Exam  ");
@@ -150,18 +167,6 @@ public class StudentExam extends javax.swing.JFrame {
 
         studentMenuBar1.add(scoreMenu);
 
-        resultMenu.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        resultMenu.setText("Results  ");
-        resultMenu.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-
-        displayResultsMenu.setText("Display Results");
-        resultMenu.add(displayResultsMenu);
-
-        sortMenuItem.setText(" Sort Marks");
-        resultMenu.add(sortMenuItem);
-
-        studentMenuBar1.add(resultMenu);
-
         teacherMenu.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         teacherMenu.setText("teacher  ");
         teacherMenu.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -198,13 +203,14 @@ public class StudentExam extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 2407, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 2383, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 2200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 0, 0)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 2189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -239,7 +245,7 @@ public class StudentExam extends javax.swing.JFrame {
     }//GEN-LAST:event_teacherInfoActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        //new DAL().hide();
+        hide();
         new Login().setVisible(true);
         
         
@@ -250,14 +256,57 @@ public class StudentExam extends javax.swing.JFrame {
     }//GEN-LAST:event_addTeacherActionPerformed
 
     private void deleteTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteTeacherActionPerformed
-        
+        new DeleteTeacher().setVisible(true);
     }//GEN-LAST:event_deleteTeacherActionPerformed
 
     private void logOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutActionPerformed
         new Login().setVisible(true);
-        new DAL().hide();
+        flag=0;
+        hide();
     }//GEN-LAST:event_logOutActionPerformed
 
+    private void jLabel1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jLabel1FocusGained
+        // TODO add your handling code here:
+        if(flag==0){
+         hide();
+        
+        }
+        else if(flag==1){
+            view();
+        }
+        
+        
+    }//GEN-LAST:event_jLabel1FocusGained
+
+    private void jPanel1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel1FocusGained
+        jLabel1FocusGained(null);
+    }//GEN-LAST:event_jPanel1FocusGained
+
+    private void studentMenuBar1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_studentMenuBar1FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_studentMenuBar1FocusGained
+
+    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
+        jLabel1FocusGained(null);
+    }//GEN-LAST:event_formFocusGained
+   public void view(){
+       scoreMenu.setEnabled(true);
+       studentMenu.setEnabled(true);
+       teacherMenu.setEnabled(true);
+       
+       logOut.setEnabled(true);
+       changePassword.setEnabled(true);
+       
+    }
+    public void hide(){
+       scoreMenu.setEnabled(false);
+       studentMenu.setEnabled(false);
+       teacherMenu.setEnabled(false);
+       
+       logOut.setEnabled(false);
+      changePassword.setEnabled(false);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -298,16 +347,13 @@ public class StudentExam extends javax.swing.JFrame {
     private javax.swing.JMenuItem addTeacher;
     private javax.swing.JMenuItem changePassword;
     private javax.swing.JMenuItem deleteTeacher;
-    private javax.swing.JMenuItem displayResultsMenu;
     private javax.swing.JMenu examMenu;
     private javax.swing.JMenuItem exitMenu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JMenuItem logOut;
     private javax.swing.JMenuItem loginMenu;
-    private javax.swing.JMenu resultMenu;
     private javax.swing.JMenu scoreMenu;
-    private javax.swing.JMenuItem sortMenuItem;
     private javax.swing.JMenuItem studentAdd;
     private javax.swing.JMenuItem studentInfo;
     private javax.swing.JMenu studentMenu;

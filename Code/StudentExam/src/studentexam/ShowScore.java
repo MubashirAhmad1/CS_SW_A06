@@ -13,13 +13,12 @@ import javax.swing.JTable;
  */
 public class ShowScore extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ShowScore
-     */
+    DAL dal=new DAL();
     public ShowScore() {
-        DAL d=new DAL();
-        d.setCenter(this);
+        
         initComponents();
+        
+        dal.setCenter(this);
     }
 
     /**
@@ -33,7 +32,6 @@ public class ShowScore extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         scoreTable = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
 
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -54,17 +52,13 @@ public class ShowScore extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(scoreTable);
 
-        jButton1.setText("Find Avergae");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(25, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -72,16 +66,14 @@ public class ShowScore extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        DAL dal=new DAL();
+        
         
         String sql="SELECT title,mark FROM subject INNER JOIN score ON subject.subjectId=score.subjectId INNER JOIN student ON student.studentId=score.studentId WHERE score.studentId="+StudentInfo.stId;
         String data[][]=dal.table(sql);
@@ -149,7 +141,6 @@ public class ShowScore extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable scoreTable;
     // End of variables declaration//GEN-END:variables

@@ -101,24 +101,8 @@ public class DAL {
         }
         return data; 
     }
-    public void view(){
-       StudentExam.scoreMenu.setEnabled(true);
-       StudentExam.studentMenu.setEnabled(true);
-       StudentExam.teacherMenu.setEnabled(true);
-       StudentExam.resultMenu.setEnabled(true);
-       StudentExam.logOut.setEnabled(true);
-       StudentExam.changePassword.setEnabled(true);
-       
-    }
-    public void hide(){
-        StudentExam.scoreMenu.setEnabled(false);
-       StudentExam.studentMenu.setEnabled(false);
-       StudentExam.teacherMenu.setEnabled(false);
-       StudentExam.resultMenu.setEnabled(false);
-       StudentExam.logOut.setEnabled(false);
-       StudentExam.changePassword.setEnabled(false);
-    }
-    public void setCenter(JFrame f){
+ 
+public void setCenter(JFrame f){
         int screenWidth=Toolkit.getDefaultToolkit().getScreenSize().width;
         int screenHeight=Toolkit.getDefaultToolkit().getScreenSize().height;
         
