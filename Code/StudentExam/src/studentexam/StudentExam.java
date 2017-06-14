@@ -273,6 +273,7 @@ public class StudentExam extends javax.swing.JFrame {
         }
         else if(flag==1){
             view();
+            
         }
         
         
@@ -296,6 +297,7 @@ public class StudentExam extends javax.swing.JFrame {
        
        logOut.setEnabled(true);
        changePassword.setEnabled(true);
+       loginMenu.setEnabled(false);
        
     }
     public void hide(){
